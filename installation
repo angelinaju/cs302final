@@ -1,11 +1,12 @@
 1. Download Oracle VM VirtualBox (I have version 7.0.18)
 2. Download Ubuntu 22.04 LTS 
-    - I did 22.04.5 Jammy Jellyfish for now, may need to change the version
+    - I did 22.04.5 Jammy Jellyfish for now
     - https://releases.ubuntu.com/jammy/ 
 3. Choose a new machine in the VirtualBox window, select the Ubuntu image, and skip over the next few popup windows to setup the virtual machine.
     - Remember the username and password
 4. Install ROS2 Humble within the VM.
     - https://docs.ros.org/en/humble/Installation.html
+    - if you run into error "Username not in the sudoers file", run `su root`, `nano /etc/sudoers`, and scroll down to the admin user and add like so `username ALL=(ALL) ALL`
     - https://www.youtube.com/watch?v=bDmjX1bXVk0&list=PL8MgID9MCju0GMQDTWzYmfiU3wY_Zdjl5&index=2
 5. Complete ROS2 turtlesim tutorial
     - https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html
