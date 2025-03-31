@@ -1,0 +1,20 @@
+Rubric:
+	20 points: Train and optimize reinforcement learning script
+	10: Create final environment to test the functionality in IsaacSim
+	5: Watch the Proximal Policy and ROS2 tutorials
+	5 points: Download all the required materials
+
+Team Meetings:
+	- 3/31/2025 (1.75hrs): 3:00 PM - 4:45 PM
+		- Initial meeting
+		- Installing develop environment
+
+Time Log:
+	3/31/2025 (1.75hrs): 3:00 PM - 4:45 PM
+		- Initial meeting
+		- Downloading prerequisties (laptop)
+	3/31/2025 (?): 5:45 PM - ?
+		- Downloading prerequisties (desktop)
+		- Researching what Proximal Policy Optimization tutorial to follow
+		-
+
