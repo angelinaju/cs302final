@@ -1,0 +1,10 @@
+Time Log
+	09:37 03/26/2025
+	beginning to implement reinforcement learning, namely Proximal Policy Optimization, as a basic skeleton
+
+Rubric
+	10 points - Train and optimize reinforcement learning (RL) script
+	8 points - Build final environment to test robot functionality in IsaacSim environment
+	5 points - Build graph-based data structure to test initial functionality of RL script
+
+
