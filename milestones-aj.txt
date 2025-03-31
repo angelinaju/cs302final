@@ -2,4 +2,6 @@
     - Downloaded prerequisites such as VM, Ubuntu
     - Wrote out an instructions file for basic download information as well as suggestions on where to go next
 
-3/30/2025: 
+3/30/2025: 1.5 hrs
+    - Downloaded ROS Humble
+    - Completed multiple ROS2 tutorials including turtlesim   

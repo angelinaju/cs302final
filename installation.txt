@@ -12,6 +12,7 @@
     - https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html
 6. Additional ROS2 tutorials
     - https://docs.ros.org/en/humble/Tutorials.html
+    - https://www.youtube.com/watch?v=Gg25GfA456o (my personal favorite ROS tutorial guy)
 7. at some point install NVIDIA's Omniverse 
     - https://docs.omniverse.nvidia.com/launcher/latest/it-managed-launcher/install_guide_linux.html
 8. Isaaclab? https://github.com/isaac-sim/OmniIsaacGymEnvs
