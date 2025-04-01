@@ -1,3 +1,13 @@
+Challenge 7 Report:
+	For how late I ended up starting on this challenge I think it went quite well. I'm glad
+	that it was a challenge as I feel a lot more comfortable with the project that we have 
+	decided on as it is a completely different ball park compared to what I am used to with
+	the web-development flow of backend -> middle layer -> frontend. Now I feel like I have
+	a better grip of the terminologies being used obviously not perfect yet but much better
+	than before. Honestly the aspect I had the hardest part with was trying to get the 
+	gym and mujoco installations to work together, after that I feel like I followed the
+	tutorial to set up the environment well and understood the steps that were happening.
+
 Rubric:
 	20 points: Train and optimize reinforcement learning script
 	10: Create final environment to test the functionality in IsaacSim
@@ -13,8 +23,13 @@ Time Log:
 	3/31/2025 (1.75hrs): 3:00 PM - 4:45 PM
 		- Initial meeting
 		- Downloading prerequisties (laptop)
-	3/31/2025 (?): 5:45 PM - ?
+	3/31/2025 (1.25hrs): 5:45 PM - 7:00 PM
 		- Downloading prerequisties (desktop)
 		- Researching what Proximal Policy Optimization tutorial to follow
-		-
+			- Decided on this: https://pytorch.org/tutorials/intermediate/reinforcement_ppo.html
+	3/31/2025 (3hrs): 8:00PM - 11:00 PM
+		- Installing developer environment reqs for tutorial
+			- python 3.13, torchrl, gym[mujoco], tqdm
+		- Following tutorial to learn about PPO and determine how we will use it in our project
+		- Commenting, transferring files, adding install info
 
