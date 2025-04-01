@@ -21,4 +21,5 @@ Time Log:
 		- Installing developer environment reqs for tutorial
 			- python 3.13, torchrl, gym[mujoco], tqdm
 		- Following tutorial to learn about PPO and determine how we will use it in our project
+		- Commenting, transferring files, adding install info
 
