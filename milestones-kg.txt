@@ -2,11 +2,19 @@ Challenge 7 Report:
 	For how late I ended up starting on this challenge I think it went quite well. I'm glad
 	that it was a challenge as I feel a lot more comfortable with the project that we have 
 	decided on as it is a completely different ball park compared to what I am used to with
-	the web-development flow of backend -> middle layer -> frontend. Now I feel like I have
-	a better grip of the terminologies being used obviously not perfect yet but much better
-	than before. Honestly the aspect I had the hardest part with was trying to get the 
-	gym and mujoco installations to work together, after that I feel like I followed the
-	tutorial to set up the environment well and understood the steps that were happening.
+	web-development. Now I feel like I have	a better grip of the terminologies being used 
+	obviously not perfect yet but much better than before. Honestly the aspect I had the 
+	hardest part with was trying to get the gym and mujoco installations to work together, 
+	after that I feel like I followed the tutorial to set up the environment well and 
+	understood the steps that were happening.
+
+Github:
+	- To compile the program there are a few installs you may need, I have added an 
+	  installation guide in the file, it should be relatively quick an easy. I have also 
+	  include the results if you do not wish to install the extras.
+	- Code: https://github.com/angelinaju/cs302final/blob/main/ppotutorials/ppo-pytorch-tutorial.py
+	- Run with: python .\ppo-pytorch-tutorial.py
+	- Results: https://github.com/angelinaju/cs302final/blob/main/ppotutorials/ppo-pytorch-tutorial.png
 
 Rubric:
 	20 points: Train and optimize reinforcement learning script
