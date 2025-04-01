@@ -13,8 +13,12 @@ Time Log:
 	3/31/2025 (1.75hrs): 3:00 PM - 4:45 PM
 		- Initial meeting
 		- Downloading prerequisties (laptop)
-	3/31/2025 (?): 5:45 PM - ?
+	3/31/2025 (1.25hrs): 5:45 PM - 7:00 PM
 		- Downloading prerequisties (desktop)
 		- Researching what Proximal Policy Optimization tutorial to follow
-		-
+			- Decided on this: https://pytorch.org/tutorials/intermediate/reinforcement_ppo.html
+	3/31/2025 (): 8:00PM - ?
+		- Installing developer environment reqs for tutorial
+			- python 3.13, torchrl, gym[mujoco], tqdm
+		- Following tutorial to learn about PPO and determine how we will use it in our project
 
