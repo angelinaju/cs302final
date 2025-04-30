@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import numpy as np
+import pickle
 
 import sys
 
@@ -170,13 +171,25 @@ def main():
     agent_num = 0
     if ARGS.AgentNum:
         agent_num = ARGS.AgentNum
-    if os.path.exists(models_path + "/" + file_name + str(agent_num) +
-                      "_policy"):
-        print("Loading Existing agent")
-        agent.load(models_path + "/" + file_name + str(agent_num))
-        agent.policy.episode_steps = np.inf
-        policy = agent.policy
+# if os.path.exists(models_path + "/" + file_name + str(agent_num) +
+    #                   "_policy"):
+    #     print("Loading Existing agent")
+    #     agent.load(models_path + "/" + file_name + str(agent_num))
+    #     agent.policy.episode_steps = np.inf
+    #     policy = agent.policy
 
+    policy_path = os.path.join(models_path, f"{file_name}{agent_num}_policy")
+    if os.path.exists(policy_path):
+        print(f"Loading Existing policy from {policy_path}")
+        try: 
+            with open(policy_path,"rb") as f:
+                theta = pickle.load(f, encoding='latin1')
+            agent.policy.theta = theta
+            agent.policy.episode_steps = np.inf
+            policy = agent.policy
+            print("Policy loaded successfully")
+        except Exception as e:
+            print("Failed to load policy: {e}")
     env.reset()
     episode_reward = 0
     episode_timesteps = 0
