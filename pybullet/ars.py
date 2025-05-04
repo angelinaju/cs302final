@@ -1,3 +1,5 @@
+# * augmented random search algorithm 
+
 # from tg_lib.tg_policy import TGPolicy
 import pickle
 import numpy as np
@@ -53,7 +55,7 @@ def butter_lowpass_filter(data, cutoff, fs, order=2):
     return y
 
 
-def ParallelWorker(childPipe, nb_states):
+def ParallelWorker(childPipe, nb_states):  # * changed this because why was it not connecting to physics server?
     import pybullet as p
     p.connect(p.DIRECT)
     """ Function to deploy multiple ARS agents in parallel
@@ -238,19 +240,21 @@ class Policy():
     def __init__(
             self,
             state_dim,
-            action_dim,
+            action_dim,    # * num_deltas, num_best_deltas, episode_steps, and expl_noise are all altered
+                           # * for my weaker laptop 
             # how much weights are changed each step
             learning_rate=0.03,
             # number of random expl_noise variations generated
             # each step
             # each one will be run for 2 epochs, + and -
-            num_deltas=10, # reduce from 16
+            num_deltas=12, # reduce from 16
             # used to update weights, sorted by highest rwrd
-            num_best_deltas=5,
+            num_best_deltas=6,
             # number of timesteps per episode per rollout
-            episode_steps=5000,
+            episode_steps=1000,
             # weight of sampled exploration noise
-            expl_noise=0.05,
+            # expl_noise=0.05,
+            expl_noise = 0.1,
             # for seed gen
             seed=0):
 
@@ -271,7 +275,7 @@ class Policy():
         # this is the perception matrix (policy)
         self.theta = np.zeros((action_dim, state_dim))
 
-    def evaluate(self, state, delta=None, direction=None):
+    def evaluate(self, state, delta=None, direction=None):  # * returning +delta or -delta for training purposes
         """ state --> action
         """
 
@@ -321,7 +325,8 @@ class Policy():
                                             std_dev_rewards) * step
 
 
-class Normalizer():
+class Normalizer(): # * tracking mean and variance of policy states
+                    # * ensures consistent input scaling for policy
     """ this ensures that the policy puts equal weight upon
         each state component.
     """
@@ -360,7 +365,10 @@ class Normalizer():
         return (states - state_mean) / state_std
 
 
-class ARSAgent():
+class ARSAgent():       # * ARS logic goes here
+                        # * augmented random search builds off of basic random search, which is less efficient
+                        # * ARS has a scaling factor based on standard deviation of collected rewards and discards
+                        # * the rewards that lead to the least improvement
     def __init__(self,
                  normalizer,
                  policy,
@@ -428,7 +436,10 @@ class ARSAgent():
 
     # Deploy Policy in one direction over one whole episode
     # DO THIS ONCE PER ROLLOUT OR DURING DEPLOYMENT
-    def deployTG(self, direction=None, delta=None):
+    def deployTG(self, direction=None, delta=None): # * this is similar to the Deploy() function, but uses something called trajectory generation
+                                                    # * (bezier-based walking)
+                                                    # * trajectory generation is planning trajectories for autonomous robots/vehicles that minimizes cost function
+                                                    # * implementing Bezier curves are optimal because they can use a few control points to describe the curve
         state = self.env.reset()
         sum_rewards = 0.0
         timesteps = 0
