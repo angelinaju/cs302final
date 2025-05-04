@@ -2,9 +2,10 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-# import pybullet as pb
-
+import os
+import argparse
 import sys
+import pickle
 
 sys.path.append('../../')
 
@@ -54,8 +55,6 @@ _EXPLORE = 3
 def main():
     """ The main() function. """
     # Hold mp pipes
-    # pybullet.connect(pybullet.DIRECT)
-    # pybullet.setGravity(0, 0, -9.81)
 
     mp.freeze_support()
 
@@ -64,8 +63,8 @@ def main():
     if ARGS.Seed:
         seed = int(ARGS.Seed)
     print("SEED: {}".format(seed))
-    max_timesteps = 4e6
-    eval_freq = 1e1
+    max_timesteps = 2e5
+    eval_freq = 10
     save_model = True
     file_name = "spot_ars_"
 
@@ -105,7 +104,7 @@ def main():
                         height_field=height_field,
                         draw_foot_path=False,
                         contacts=contacts,
-                        env_randomizer=env_randomizer)
+                        env_randomizer=env_randomizer, include_ball=True)
 
     # Set seeds
     env.seed(seed)
@@ -136,10 +135,15 @@ def main():
     # Initialize Agent with normalizer, policy and gym env
     agent = ARSAgent(normalizer, policy, env, bz_step, bzg, spot)
     agent_num = 0
-    if os.path.exists(models_path + "/" + file_name + str(agent_num) +
-                      "_policy"):
+    pretrained = os.path.join(models_path, f"spot_ars{agent_num}_policy")
+    if os.path.exists(pretrained):
         print("Loading Existing agent")
-        agent.load(models_path + "/" + file_name + str(agent_num))
+        with open(pretrained, 'rb') as f:
+            old_theta = pickle.load(f, encoding='latin1')
+        new_theta = np.zeros((action_dim, state_dim))
+        new_theta[:, :old_theta.shape[1]] = old_theta
+        agent.policy.theta = new_theta
+        agent.policy.state_dim = state_dim
 
     env.reset(agent.desired_velocity, agent.desired_rate)
 
@@ -160,8 +164,9 @@ def main():
         childPipes.append(childPipe)
 
     # Start multiprocessing
-    # Start multiprocessing
-    for proc_num in range(num_processes):
+    for proc_num in range(num_processes):  # * wasn't working originally because the code was trying to launch an overarching physics server
+                                           # * but you need a separate one for each parallel worker 
+                                           # * FIXED
         # p = mp.Process(target=ParallelWorker,
         #                args=(childPipes[proc_num], env, state_dim))
         p = mp.Process(target=ParallelWorker, args=(childPipes[proc_num], state_dim))

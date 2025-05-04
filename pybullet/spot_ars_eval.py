@@ -50,7 +50,8 @@ parser.add_argument("-nc",
                     "--NoContactSensing",
                     help="Disable Contact Sensing",
                     action='store_true')
-parser.add_argument("-a", "--AgentNum", help="Agent Number To Load")
+parser.add_argument("-a", "--AgentNum", help="Agent Number To Load") # * I was able to load pre-trained policies from the repo up to agentnum 1069 for about a day or 2 but randomly
+                                                                     # * stopped working the next day
 parser.add_argument("-dr",
                     "--DontRandomize",
                     help="Do NOT Randomize State and Environment.",
@@ -167,11 +168,12 @@ def main():
         gui = False
 
     # Initialize Agent with normalizer, policy and gym env
-    agent = ARSAgent(normalizer, policy, env, bz_step, bzg, spot, gui)
+    agent = ARSAgent(normalizer, policy, env, bz_step, bzg, spot, gui) # * loading method provided in repo didn't work
+                                                                       # * tried pickle loading
     agent_num = 0
     if ARGS.AgentNum:
         agent_num = ARGS.AgentNum
-# if os.path.exists(models_path + "/" + file_name + str(agent_num) +
+    # if os.path.exists(models_path + "/" + file_name + str(agent_num) +
     #                   "_policy"):
     #     print("Loading Existing agent")
     #     agent.load(models_path + "/" + file_name + str(agent_num))
@@ -190,6 +192,7 @@ def main():
             print("Policy loaded successfully")
         except Exception as e:
             print("Failed to load policy: {e}")
+
     env.reset()
     episode_reward = 0
     episode_timesteps = 0
