@@ -55,7 +55,6 @@ _EXPLORE = 3
 def main():
     """ The main() function. """
     # Hold mp pipes
-
     mp.freeze_support()
 
     print("STARTING SPOT TRAINING ENV")
@@ -104,7 +103,7 @@ def main():
                         height_field=height_field,
                         draw_foot_path=False,
                         contacts=contacts,
-                        env_randomizer=env_randomizer, include_ball=True)
+                        env_randomizer=env_randomizer)
 
     # Set seeds
     env.seed(seed)
@@ -141,7 +140,7 @@ def main():
         with open(pretrained, 'rb') as f:
             old_theta = pickle.load(f, encoding='latin1')
         new_theta = np.zeros((action_dim, state_dim))
-        new_theta[:, :old_theta.shape[1]] = old_theta
+        # new_theta[:, :old_theta.shape[1]] = old_theta
         agent.policy.theta = new_theta
         agent.policy.state_dim = state_dim
 
