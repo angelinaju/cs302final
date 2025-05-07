@@ -1,0 +1,28 @@
+Repository link: https://github.com/angelinaju/cs302final
+
+Time Log
+	03/26/2025 (1 hour in lab)
+	beginning to implement reinforcement learning, namely Proximal Policy Optimization, as a basic skeleton
+
+	03/31/2025 (30 min)
+	downloaded virtual machine necessary to implement environment
+
+	15:15 03/31/2025 (1 hour)
+	team meeting to discuss more about tasks needed to efficiently progress through project
+
+	04/04/2025 (1 hour)
+	downloaded rest of necessary dependencies for implementation
+
+	04/05/2025 (2 hours)
+	started PPO tutorials to further understand reinforcement learning ideas
+	put coding progress in jupyter notebook of python code to test compilation and take notes
+	a lot of conflicting information so i didn't progress as much as i wanted in my implementation, but it compiles
+	brainstormed any additional data structure we could build for our project
+
+
+Rubric
+	20 points - Train and optimize reinforcement learning (RL) script
+	8 points - Build final environment for visualization using Omniverse with chosen robot model
+	5 points - Install necessary dependencies and files needed for implementation
+	3 points - Thoroughly understanding the concepts behind Proximal Policy Optimization and ROS2 Humble
+	4 points - Communicating any additional ideas to implement needed data structure to further implement RL script
